@@ -124,7 +124,8 @@ int main(int argc, char **argv) {
   model_init(&model, device_id, context, true);
   LOGW("models loaded, modeld starting");
 
-  auto vipc_client = VisionIpcClient("camerad", VISION_STREAM_YUV_BACK, true, device_id, context);
+  VisionIpcClient vipc_client = VisionIpcClient("camerad", VISION_STREAM_YUV_BACK, true, device_id, context);
+  vipc_client.connect();
 
   // loop
   while (!do_exit) {
